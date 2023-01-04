@@ -1,0 +1,32 @@
+une surcouche au javascript
+
+fichier.ts 
+
+le naviguateur ne peut pas executer du code typescript
+
+
+installer typscript => node + npm install -g typescript
+
+			  => tsc index.ts  => creer un fichier index.js
+
+initialiser un projet typescript => tsc --init => cree un fichier tsconfig.js
+
+
+si dans "target" :"ES5" => changer en une version superieur es2020, es2016...
+
+on ne peut pas faire ça: 
+
+let id= 5;
+id="mot"
+
+<script src="" defer></script> ou <script src="" async></script> pour mettre du script dans le head
+
+si on creer un dossier src et dist, app.ts dans src
+
+ "outDir": "./dist", => créer app.js dans src
+
+
+ à chaque modification dans app.ts faire tsc --watch 
+
+
+
