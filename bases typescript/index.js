@@ -32,3 +32,31 @@ var modo = {
     id: 1,
     pseudo: "Joe"
 };
+var Admin = {
+    id: 1,
+    pseudo: "bocs"
+};
+//les interfaces sont dynamiques et peuvent etre modificer contrairement aux types..
+//Enum
+var Direction;
+(function (Direction) {
+    Direction[Direction["Haut"] = 1] = "Haut";
+    Direction[Direction["Bas"] = 2] = "Bas";
+    Direction[Direction["Gauche"] = 3] = "Gauche";
+    Direction[Direction["Droite"] = 4] = "Droite";
+})(Direction || (Direction = {}));
+Direction.Haut;
+//Assertion
+var cid;
+//cid = <number>85
+//cid = <AdminInterface>
+//fonction
+function addition(x, y) {
+    return x + y;
+}
+console.log(addition(5, 6));
+//type void
+function log(message) {
+    console.log(message);
+}
+log("salut");

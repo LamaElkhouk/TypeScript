@@ -53,7 +53,8 @@ const modo :Modo={
 
 interface AdminInterface{
     id:number,
-    pseudo:string
+    pseudo:string,
+    age?:number //champ optionel !
 }
 const Admin:AdminInterface = {
     id:1,
@@ -61,3 +62,30 @@ const Admin:AdminInterface = {
 }
 
 //les interfaces sont dynamiques et peuvent etre modificer contrairement aux types..
+
+//Enum
+
+enum Direction {
+    Haut=1,Bas,Gauche,Droite
+}
+Direction.Haut
+//Assertion
+
+let cid :any;
+//cid = <number>85
+//cid = <AdminInterface>
+
+//fonction
+
+function addition(x:number,y:number):number{
+    return x+y
+}
+
+console.log(addition(5,6))
+
+//type void
+
+function log(message:string|number):void{  //on a plus besoin du return avec void
+    console.log(message)
+}
+log("salut")
