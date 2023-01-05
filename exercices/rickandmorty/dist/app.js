@@ -25,7 +25,7 @@ fetch(url)
         const section = document.createElement("section");
         card.append(section);
         //ajout du nom
-        name.textContent = element.name;
+        //name.textContent=element.name   
         name.append(element.name); //<div> <div class="card"> <h3>element</h3>  </div> </div>
         //ajout d'une div qui contient le circle O status-race
         const div = document.createElement("div");
