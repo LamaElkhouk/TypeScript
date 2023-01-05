@@ -89,3 +89,9 @@ function log(message:string|number):void{  //on a plus besoin du return avec voi
     console.log(message)
 }
 log("salut")
+//generic
+
+function person(nom:string){
+    return nom
+}
+person("Dupont")
