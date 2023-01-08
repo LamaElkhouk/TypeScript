@@ -1,0 +1,32 @@
+1)installation
+
+=> npm create vite
+
+nom du projet : skyscanner
+choisir Vue 
+choisir TypeScript
+
+=>npm install vue-router
+
+=>npm run dev
+
+2)structure
+
+components : Accueil, Menu, UnVol, Favoris
+
+=> Accueil : affichage de tout les aéroports d'une localité
+=> UnVol : contient les details d'un Vol précis
+=> Favoris : contient la liste des favoris selectionnés et permet d'en supprimer un
+
+
+skyscanner/
+├── src/
+|   |__ components/
+|   |
+|   ├── types/               => dossier qui contient les interfaces
+|   |   └── Aeroport.ts
+|   |   |__ Vols.ts
+|   └── App.vue
+
+
+
