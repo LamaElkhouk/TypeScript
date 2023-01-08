@@ -1,71 +1,72 @@
 <template>
-    <h1>{{titre}}</h1>
+    <div>
+        <div class="search-vols-background">
+        <form class="form-vols-container">
+            <div class="form-vols">
+                <div>
+                    <label for="origin">depart *</label>
+                    <input class="form-control input-form"  type="text" id="origin" v-model="origin"  placeholder="indiquer une ville de depart" required/>
 
-        <form>
-            <div>
-                <label for="origin">depart *</label>
-                <input class="form-control input-form"  type="text" id="origin" v-model="origin"  placeholder="indiquer une ville de depart" required/>
+                    <label for="date">date depart *</label>
+                    <input class="form-control input-form"  type="date" id="date" v-model="date" required/>
+                </div>
 
-                <label for="date">date depart *</label>
-                <input class="form-control input-form"  type="date" id="date" v-model="date" required/>
+                <div>
+                    <label for="destination">destination *</label>
+                    <input class="form-control input-form"  type="text" id="destination" v-model="destination"  placeholder="indiquer une destination" required/>             
+
+                    <label for="returnDate">date retour</label>
+                    <input class="form-control input-form"  type="date" id="returnDate" v-model="returnDate"/>
+                </div>
+
+                <div>
+                    <label for="adults">nombre adulte</label>
+                    <input class="form-control input-form"  type="number" id="adults"  v-model="adults"  />
+
+                    <label for="children">nombre enfant</label>
+                    <input class="form-control input-form"  type="number" id="children" v-model="children"  />
+                </div>
             </div>
 
-            <div>
-                <label for="destination">destination *</label>
-                <input class="form-control input-form"  type="text" id="destination" v-model="destination"  placeholder="indiquer une destination" required/>             
-
-                <label for="returnDate">date retour</label>
-                <input class="form-control input-form"  type="date" id="returnDate" v-model="returnDate"/>
-            </div>
-
-            <div>
-                <label for="adults">nombre adulte</label>
-                <input class="form-control input-form"  type="number" id="adults"  v-model="adults"  />
-
-                <label for="children">nombre enfant</label>
-                <input class="form-control input-form"  type="number" id="children" v-model="children"  />
-
-            </div>
-
-            <button class="btn btn-info" type="submit" @click.prevent="submit">Rechercher</button>
+            <div class="btn-form-vol" type="submit" @click.prevent="submit">Rechercher</div>
         </form>
-
-            <div v-for="e in vols" :key="e.id">
-                <div style="border-style: inset;" v-if="returnDate!=''" >
-                    <div >
+    </div>
+            <div class="container-spinner">
+                <div class="spinner-border text-info" role="status" v-if='isLoading && !vols.length'></div>
+            </div>
+            
+            <div class="cards-vols container">
+                <div v-for="e in vols " :key="e.id">
+                    <div class="card-vol" v-if="returnDate!=''" >
+                        <div class="informations-vol">
+                            <div>
+                                <h3>aller</h3>
+                                <p style="color:red">aller - retour: <strong>{{ e.legs[0].origin.display_code}}</strong>, {{ e.legs[0].origin.name }} - <strong>{{ e.legs[0].destination.display_code }} </strong>, {{ e.legs[0].destination.name }} </p>
+                                <p> depart : Le {{ convertir_date(e.legs[0].departure)}} à {{convertir_heure(e.legs[0].departure)}}</p>
+                                <p> arrivée :Le {{ convertir_date(e.legs[0].arrival)}} à {{ convertir_heure(e.legs[0].arrival)}}</p>
+                                <p>duree {{convertir_duree(e.legs[0].duration)}}</p>
+                            </div>
+                            <div>
+                                <h3>retour</h3>
+                                <p style="color:red">aller - retour: <strong>{{ e.legs[1].origin.display_code}}</strong>, {{ e.legs[1].origin.name }} - <strong>{{ e.legs[1].destination.display_code }} </strong>, {{ e.legs[1].destination.name }} </p>
+                                <p> depart : Le {{ convertir_date(e.legs[1].departure)}} à {{convertir_heure(e.legs[1].departure)}}</p>
+                                <p> arrivée :Le {{ convertir_date(e.legs[1].arrival)}} à {{ convertir_heure(e.legs[1].arrival)}}</p>
+                                <p>duree {{convertir_duree(e.legs[0].duration)}}</p>
+                            </div>
+                        </div>
+                        <h2 style="color:grey">prix totale: {{e.price.amount}}€</h2>
+                    </div>
+                    <div v-else style="border-style: inset;">
                         <h3>aller</h3>
                         <p style="color:red">aller - retour: <strong>{{ e.legs[0].origin.display_code}}</strong>, {{ e.legs[0].origin.name }} - <strong>{{ e.legs[0].destination.display_code }} </strong>, {{ e.legs[0].destination.name }} </p>
-                        <p> depart : {{ e.legs[0].departure }} </p>
-                        <p> arrivée : {{ e.legs[0].arrival }}</p>
-                        <p> durée : {{ e.legs[0].duration }}</p>
-
-
+                        <p> depart : Le {{ convertir_date(e.legs[0].departure)}} à {{convertir_heure(e.legs[0].departure)}}</p>
+                        <p> arrivée :Le {{ convertir_date(e.legs[0].arrival)}} à {{ convertir_heure(e.legs[0].arrival)}}</p>
+                        <p>duree {{convertir_duree(e.legs[0].duration)}}</p>
+                        <h2 style="color:grey">prix totale: {{e.price.amount}}€</h2>
                     </div>
-                    <div>
-                        <h3>retour</h3>
-                        <p style="color:red">aller - retour: <strong>{{ e.legs[1].origin.display_code}}</strong>, {{ e.legs[1].origin.name }} - <strong>{{ e.legs[1].destination.display_code }} </strong>, {{ e.legs[1].destination.name }} </p>
-                        <p> depart : {{ e.legs[1].departure }} </p>
-                        <p> arrivée : {{ e.legs[1].arrival }}</p>
-                        <p> durée : {{ e.legs[1].duration }}</p>
-                    </div>
-                    <h2 style="color:grey">prix totale: {{e.price.amount}}</h2>
-                    
-                </div>
-                <div v-else style="border-style: inset;">
-                    <h3>aller</h3>
-                    <p style="color:red">aller - retour: <strong>{{ e.legs[0].origin.display_code}}</strong>, {{ e.legs[0].origin.name }} - <strong>{{ e.legs[0].destination.display_code }} </strong>, {{ e.legs[0].destination.name }} </p>
-                    <p> depart : {{ e.legs[0].departure }} </p>
-                    <p> arrivée : {{ e.legs[0].arrival }}</p>
-                    <p> durée : {{ e.legs[0].duration }}</p>
-                    <h2 style="color:grey">prix totale: {{e.price.amount}}</h2>
-
                 </div>
             </div>
-                
-            
-                
-            
-        
+    </div>
 </template>
 
 <script lang="ts">
@@ -78,7 +79,7 @@ const url:string = 'https://skyscanner50.p.rapidapi.com/api/v1/searchFlights'
 export default defineComponent({
     data(){
         return{
-            titre:'des vols' as string,
+            isLoading: false as boolean,
             vols:[] as Vols[],
             origin:'' as string,
             destination:'' as string,
@@ -90,7 +91,26 @@ export default defineComponent({
         }
     },
     methods:{
+        convertir_date(date:string){ //2023-01-16T17:50:00
+            let new_date=date.split("T"); //2023-01-16,17:50:00
+            return new_date[0]; //2023-01-16
+        },
+        convertir_heure(heure:string){
+            let new_heure=heure.split("T");
+            let new_heure_final= new_heure[1].split(":");
+            //return new Date(new_heure[1]).getHours()+"h"+new Date(new_heure[1]).getMinutes()
+            return new_heure_final[0]+"h"+new_heure_final[1]
+        },
+        convertir_duree(duree:string){
+            let hours=Number(duree)/60;
+            let rhours = Math.floor(hours);
+            let minutes = (hours - rhours) * 60;
+            let rminutes = Math.round(minutes);
+            return  rhours + "h" + rminutes;
+        },
         submit(){
+            this.isLoading = true;
+
             let query_reponse ={
                 origin:this.origin,
                 destination:this.destination,
@@ -100,8 +120,9 @@ export default defineComponent({
                 adults:this.adults,
                 currency:this.currency
                 }
-            console.log("vol "+query_reponse.origin+" "+query_reponse.destination+" "+query_reponse.date+" "+query_reponse.returnDate+" "+query_reponse.children+" "+query_reponse.adults+" "+query_reponse.currency)
-
+            console.log("vol "+query_reponse.origin+" "+query_reponse.destination+" "+query_reponse.date+" "+
+                        query_reponse.returnDate+" "+query_reponse.children+" "+query_reponse.adults+" "+
+                        query_reponse.currency)
 
         axios.get(url, {
             params: {
@@ -122,26 +143,6 @@ export default defineComponent({
                 this.vols = response.data.data
             })
         }
-    },
-    mounted(){
-        /*axios.get(url, {
-            params: {
-                origin: 'LOND',
-                destination: 'NYCA',
-                date: '2023-01-06',
-                returnDate: '2023-01-12',
-                adults: '1',
-                children: '2'   
-            },
-                headers: {
-                        'X-RapidAPI-Key': 'c2a4b54320msh39c2bd408379f9bp100c21jsnd83fb8c8efcf',
-                        'X-RapidAPI-Host': 'skyscanner50.p.rapidapi.com'
-                }
-            })
-            .then(response => {
-                console.log(response.data.data);
-                this.vols = response.data.data
-            })*/
     }
 
 })

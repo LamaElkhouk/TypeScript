@@ -1,17 +1,19 @@
 <template>
     <!-- Sidebar-->
-    <div class="menu bg-info">
-        <nav class="navbar navbar-expand container">
-            <RouterLink  :to="{name:'accueil'}"  class="navbar-brand">
-                        SkyScanner
-            </RouterLink>
-            <ul class="navbar-nav">
-                <li class="nav-item">
+    <div class="menu container">
+        <nav class="menu-nav">
+            <p class="title">
+                <RouterLink  :to="{name:'accueil'}"  class="navbar-brand">
+                            SkyScanner
+                </RouterLink>
+            </p>
+            <ul>
+                <li>
                     <RouterLink  :to="{name:'accueil'}"  class="nav-link">
                         Accueil
                     </RouterLink>
                 </li>
-                <li class="nav-item">
+                <li>
                     <RouterLink  :to="{name:'vols'}"  class="nav-link">
                         vols
                     </RouterLink>

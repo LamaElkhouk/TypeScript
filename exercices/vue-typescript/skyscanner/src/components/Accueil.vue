@@ -3,14 +3,14 @@
         <div class="search-aeroport-background ">
             <h1 class="titre-accueil">{{h1}}</h1>
             <form class="form-accueil">
-                <input class="form-control input-form"  type="text"  v-model="nom_ville"  placeholder="Veuillez rentrer le nom d'une ville"/>
-                <button class="btn btn-info" type="submit" @click.prevent="submit">Rechercher</button>
+                <input class="form-control input-form-accueil"  type="text"  v-model="nom_ville"  placeholder="Veuillez rentrer le nom d'une ville"/>
+                <div class="btn-form-accueil" type="submit" @click.prevent="submit">Rechercher</div>
             </form>
         </div>
-        
 
             <div v-for="e in aeroports" :key="e.PlaceId">
-                <p>{{ e.PlaceName }}</p>
+                <p>{{ e.PlaceName }}, {{e.CityId}} - {{e.CityName}}</p>
+                
             </div>
         
 
