@@ -1,9 +1,14 @@
+
+/*global*/
+h3{
+    color:#ff7b59;
+}
 /*menu*/
+
 .menu{
     width: 100%;
     height: 5rem;
     background-color: white;
-    
 }
 .menu-nav{
     display: flex;
@@ -22,6 +27,7 @@ ul {
     list-style-type: none;
     display: flex;
     flex-direction: row;
+    margin: 0;
     height: 100%;
 }
 ul li{
@@ -70,6 +76,16 @@ ul li{
 }
 .input-form-accueil{
     width: 20rem;
+    
+}
+.bi-search{
+    position: absolute;
+    fill: #0062e3;
+    top: 0.7rem;
+    left: 17rem;
+}
+.form-accueil-input-icon{
+    position: relative;
 }
 .btn-form-accueil{
     width: 10rem;
@@ -78,6 +94,31 @@ ul li{
     color:white;
     padding: 0.5rem;
     border-radius: 0.3rem;
+}
+.container-aeroports{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.card-aeroport{
+    background-color: #f1f2f8;
+    display: flex;
+    flex-direction: row;
+    color: #084eb2;
+    gap: 2rem;
+    border-radius: 0.5rem;
+    height: 3rem;
+    align-items: center;
+    width: 20rem;
+    padding-left: 1rem;
+}
+.bi-airplane-fill{
+    fill: #084eb2;
 }
 /*vols*/
 .search-vols-background{
@@ -137,6 +178,10 @@ ul li{
     flex-direction:row;
     gap: 1.5rem;
 }
+
+.informations-vol-aller,.informations-vol-retour{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
 .btn-form-vol{
     width: 10rem;
     background-color: #00887d;
@@ -144,4 +189,18 @@ ul li{
     padding: 0.5rem;
     border-radius: 0.3rem;
     margin-bottom: 2rem;
+}
+
+/*footer*/
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color:#02122c;
+    color: white;
+    width: 100%;
+    height: 8rem;
+    padding-top: 1rem;
 }

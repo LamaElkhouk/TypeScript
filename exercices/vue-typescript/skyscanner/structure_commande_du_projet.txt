@@ -1,20 +1,22 @@
 1)installation
 
-=> npm create vite
+=> npm create vite => creation du projet
 
 nom du projet : skyscanner
 choisir Vue 
 choisir TypeScript
 
-=>npm install vue-router
+=>npm install vue-router => configurer les routes
+=>npm i bootstrap-icons => utiliser les icons
 
-=>npm run dev
+=>npm run dev => lancer le projets
 
 2)structure
 
-components : Accueil, Menu, UnVol, Favoris
+components : Accueil, Menu, UnVol, Vols, Favoris
 
 => Accueil : affichage de tout les aéroports d'une localité
+=> Vols : contient tout les vols
 => UnVol : contient les details d'un Vol précis
 => Favoris : contient la liste des favoris selectionnés et permet d'en supprimer un
 

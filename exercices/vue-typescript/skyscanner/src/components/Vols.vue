@@ -36,33 +36,34 @@
             </div>
             
             <div class="cards-vols container">
-                <div v-for="e in vols " :key="e.id">
+                <div v-for="vol in vols " :key="vol.id">
                     <div class="card-vol" v-if="returnDate!=''" >
                         <div class="informations-vol">
-                            <div>
+                            <div class="information-vol-aller">
                                 <h3>aller</h3>
-                                <p style="color:red">aller - retour: <strong>{{ e.legs[0].origin.display_code}}</strong>, {{ e.legs[0].origin.name }} - <strong>{{ e.legs[0].destination.display_code }} </strong>, {{ e.legs[0].destination.name }} </p>
-                                <p> depart : Le {{ convertir_date(e.legs[0].departure)}} à {{convertir_heure(e.legs[0].departure)}}</p>
-                                <p> arrivée :Le {{ convertir_date(e.legs[0].arrival)}} à {{ convertir_heure(e.legs[0].arrival)}}</p>
-                                <p>duree {{convertir_duree(e.legs[0].duration)}}</p>
+                                <p style="color:red">aller - retour: <strong>{{ vol.legs[0].origin.display_code}}</strong>, {{ vol.legs[0].origin.name }} - <strong>{{ vol.legs[0].destination.display_code }} </strong>, {{ vol.legs[0].destination.name }} </p>
+                                <p> depart : Le {{ convertir_date(vol.legs[0].departure)}} à {{convertir_heure(vol.legs[0].departure)}}</p>
+                                <p> arrivée :Le {{ convertir_date(vol.legs[0].arrival)}} à {{ convertir_heure(vol.legs[0].arrival)}}</p>
+                                <p>duree {{convertir_duree(vol.legs[0].duration)}}</p>
                             </div>
-                            <div>
+                            <div class="information-vol-retour">
                                 <h3>retour</h3>
-                                <p style="color:red">aller - retour: <strong>{{ e.legs[1].origin.display_code}}</strong>, {{ e.legs[1].origin.name }} - <strong>{{ e.legs[1].destination.display_code }} </strong>, {{ e.legs[1].destination.name }} </p>
-                                <p> depart : Le {{ convertir_date(e.legs[1].departure)}} à {{convertir_heure(e.legs[1].departure)}}</p>
-                                <p> arrivée :Le {{ convertir_date(e.legs[1].arrival)}} à {{ convertir_heure(e.legs[1].arrival)}}</p>
-                                <p>duree {{convertir_duree(e.legs[0].duration)}}</p>
+                                <p style="color:red">aller - retour: <strong>{{ vol.legs[1].origin.display_code}}</strong>, {{ vol.legs[1].origin.name }} - <strong>{{ vol.legs[1].destination.display_code }} </strong>, {{ vol.legs[1].destination.name }} </p>
+                                <p> depart : Le {{ convertir_date(vol.legs[1].departure)}} à {{convertir_heure(vol.legs[1].departure)}}</p>
+                                <p> arrivée :Le {{ convertir_date(vol.legs[1].arrival)}} à {{ convertir_heure(vol.legs[1].arrival)}}</p>
+                                <p>duree {{convertir_duree(vol.legs[0].duration)}}</p>
                             </div>
                         </div>
-                        <h2 style="color:grey">prix totale: {{e.price.amount}}€</h2>
+                        <RouterLink :to="{name:'unVol', params:{vol: JSON.stringify(vol)}}" class="btn btn-primary">En savoir plus</RouterLink>
+                        <h2 style="color:grey">prix totale: {{vol.price.amount}}€</h2>
                     </div>
-                    <div v-else style="border-style: inset;">
+                    <div v-else style="information-vol-aller">
                         <h3>aller</h3>
-                        <p style="color:red">aller - retour: <strong>{{ e.legs[0].origin.display_code}}</strong>, {{ e.legs[0].origin.name }} - <strong>{{ e.legs[0].destination.display_code }} </strong>, {{ e.legs[0].destination.name }} </p>
-                        <p> depart : Le {{ convertir_date(e.legs[0].departure)}} à {{convertir_heure(e.legs[0].departure)}}</p>
-                        <p> arrivée :Le {{ convertir_date(e.legs[0].arrival)}} à {{ convertir_heure(e.legs[0].arrival)}}</p>
-                        <p>duree {{convertir_duree(e.legs[0].duration)}}</p>
-                        <h2 style="color:grey">prix totale: {{e.price.amount}}€</h2>
+                        <p style="color:red">aller - retour: <strong>{{ vol.legs[0].origin.display_code}}</strong>, {{ vol.legs[0].origin.name }} - <strong>{{ vol.legs[0].destination.display_code }} </strong>, {{ vol.legs[0].destination.name }} </p>
+                        <p> depart : Le {{ convertir_date(vol.legs[0].departure)}} à {{convertir_heure(vol.legs[0].departure)}}</p>
+                        <p> arrivée :Le {{ convertir_date(vol.legs[0].arrival)}} à {{ convertir_heure(vol.legs[0].arrival)}}</p>
+                        <p>duree {{convertir_duree(vol.legs[0].duration)}}</p>
+                        <h2 style="color:grey">prix totale: {{vol.price.amount}}€</h2>
                     </div>
                 </div>
             </div>
@@ -140,7 +141,7 @@ export default defineComponent({
             })
             .then(response => {
                 console.log(response.data);
-                this.vols = response.data.data
+                this.vols = response.data.data.slice(0, 10)
             })
         }
     }
