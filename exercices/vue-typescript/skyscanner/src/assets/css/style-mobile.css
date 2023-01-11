@@ -1,0 +1,113 @@
+@media only screen and (max-width: 600px) {
+    /*menu*/
+    .scroll-menu{
+        overflow-y: hidden;
+    }
+    .afficher-sur-mobile{
+        display: flex;
+    }
+    .afficher-sur-pc,.hidden{
+        display: none;
+    }
+    .bi-list,.bi-plus-lg{
+        width: 1.5rem;
+        fill: #0062e3;
+        cursor:pointer
+    }
+    .bi-plus-lg{
+        transform: rotate(135deg);
+        position: absolute;
+        right: 1.2rem;
+        top: 0.2rem;
+    }
+    .title{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .menu-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: normal;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+    }
+    .menu-ul{
+        background-color: white;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+    }
+    ul li{
+        width: 100vw;
+        height: 4rem;   
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+    }
+    /*accueil*/
+    .titre-accueil {
+        position: absolute;
+        top: 5rem;
+        left: 3rem;
+        font-size: 2.5rem;
+    }
+    .form-accueil {
+        display: flex;
+        flex-direction: column;
+    }
+    .card-aeroport {
+        width: 15rem;
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+    .container-aeroports {
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+}
+
+@media only screen and (max-width: 995px) {
+    /*vols*/
+    .form-vols-container {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin: 1.5rem;
+    }
+    .search-vols-background {
+        height: fit-content;
+    }
+    .bi-arrow-down-up {
+        height: 6rem;
+        position: absolute;
+        top: 13.5rem;
+        left: 9rem;
+        transform: rotate(180deg);
+    }
+    .information-vol-aller, .information-vol-retour {
+        width: 22rem;
+    }
+    .informations-vol {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        position: relative;
+    }
+    /*footer*/
+    .footer {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        padding-bottom: 2rem;
+        gap: 1.5rem;
+    }
+}
