@@ -37,6 +37,7 @@
             <div class="cards-vols container">
                 <!--test visuel avec donnée en dure -->
                 <div class="card-vol" >
+                    <h2>Cas aller - retour</h2>
                         <div class="informations-vol">
                             <div class="information-vol-aller">
                                 <svg xmlns="http://www.w3.org/2000/svg"  class="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -79,6 +80,7 @@
                 </div>
                 <!--aller uniquement-->
                 <div class="card-vol" >
+                    <h2>Cas aller simple :</h2>
                         <div class="informations-vol">
                             <div class="information-vol-aller">
                                 <svg xmlns="http://www.w3.org/2000/svg"  class="bi bi-heart-fill" viewBox="0 0 16 16">
